@@ -22,10 +22,14 @@ export default class SearchScreen extends React.Component {
         .catch(error => console.log('Error',error))
     }
 
+    handleAccessLocation = () => {
+        navigator.geolocation.getCurrentPosition((position) => this.handleGetWeather(position.coords.latitude, position.coords.longitude));
+    }
+
     handleGetWeather = (lat, lng) => {
         fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lng}&&APPID=00aacc4e5842a5270702d3cee87e54c1`)
         .then((response) => response.json())
-        .then((responseData) => this.setState(() => ({city: responseData.city.name})))
+        .then((responseData) => this.setState(() => ({city: responseData})))
         .then(console.log(this.state.city));
     }
 
@@ -43,7 +47,7 @@ export default class SearchScreen extends React.Component {
                     <button type="submit">Search</button>
                 </form>
                 <p>or give us your location:</p>
-                <button>access location</button>
+                <button onClick = {this.handleAccessLocation}>access location</button>
             </div>
         );
     }
