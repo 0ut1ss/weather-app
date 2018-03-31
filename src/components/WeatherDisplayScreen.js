@@ -25,10 +25,16 @@ export default class WeatherDisplayScreen extends React.Component {
                 <h1>Weather Forecast</h1>
                 <h3>{name} - {country}</h3>
                 <h3>Forecasts</h3>
+                
+                <h4>{moment(day).format('dddd')}</h4>
                 <p>Min:{this.getMinMax(list, 0, toDay)[0]} Max:{this.getMinMax(list, 0, toDay)[1]}</p>
+                <h4>{moment(day).add(1, 'days').format('dddd')}</h4>
                 <p>Min:{this.getMinMax(list, 1, secondDay)[0]} Max:{this.getMinMax(list, 1, secondDay)[1]}</p>
+                <h4>{moment(day).add(2, 'days').format('dddd')}</h4>
                 <p>Min:{this.getMinMax(list, 2, thirdDay)[0]} Max:{this.getMinMax(list, 2, thirdDay)[1]}</p>
+                <h4>{moment(day).add(3, 'days').format('dddd')}</h4>
                 <p>Min:{this.getMinMax(list, 3, fourthDay)[0]} Max:{this.getMinMax(list, 3, fourthDay)[1]}</p>
+                <h4>{moment(day).add(4, 'days').format('dddd')}</h4>
                 <p>Min:{this.getMinMax(list, 4, fifthDay)[0]} Max:{this.getMinMax(list, 4, fifthDay)[1]}</p>
             </div>
         );
