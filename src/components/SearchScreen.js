@@ -27,7 +27,7 @@ export default class SearchScreen extends React.Component {
     }
 
     handleGetWeather = (lat, lng) => {
-        fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lng}&&APPID=00aacc4e5842a5270702d3cee87e54c1`)
+        fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lng}&units=metric&&APPID=00aacc4e5842a5270702d3cee87e54c1`)
         .then((response) => response.json())
         .then((responseData) => this.setState(() => ({city: responseData})))
         .then(console.log(this.state.city));

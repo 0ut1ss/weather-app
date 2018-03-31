@@ -7,17 +7,16 @@ export default class WeatherDisplayScreen extends React.Component {
 
     getMinMax = (tlist, addDay, forecasts) => {
         tlist.filter(item => item.dt_txt.includes(moment(day).add(addDay, 'days').format("YYYY-MM-DD")));
-        let min = forecasts[0].main.temp_min;
-        let max = forecasts[0].main.temp_max;
-        let minMaxArray = [];
         const DayTemperatures = () => {
-        forecasts.forEach((forecast) => {
-        forecast.main.temp_min < min ? min = forecast.main.temp_min : min
-        forecast.main.temp_max > max ? max = forecast.main.temp_max : max
+            let tmin = 0;
+            let tmax;
+            let minMaxArray = [];
+            forecasts.forEach((forecast) => {
+            forecast.main.temp > tmin ? tmin = forecast.main.temp : tmax = forecast.main.temp;
         })
-        
+            return minMaxArray = [tmin, tmax];
         };
-        return minMaxArray = [min, max];
+        return DayTemperatures();
     };
 
     render () {
@@ -25,7 +24,12 @@ export default class WeatherDisplayScreen extends React.Component {
             <div>
                 <h1>Weather Forecast</h1>
                 <h3>{name} - {country}</h3>
-                <h3>{this.getMinMax(list, 1, secondDay)[0]}</h3>
+                <h3>Forecasts</h3>
+                <p>Min:{this.getMinMax(list, 0, toDay)[0]} Max:{this.getMinMax(list, 0, toDay)[1]}</p>
+                <p>Min:{this.getMinMax(list, 1, secondDay)[0]} Max:{this.getMinMax(list, 1, secondDay)[1]}</p>
+                <p>Min:{this.getMinMax(list, 2, thirdDay)[0]} Max:{this.getMinMax(list, 2, thirdDay)[1]}</p>
+                <p>Min:{this.getMinMax(list, 3, fourthDay)[0]} Max:{this.getMinMax(list, 3, fourthDay)[1]}</p>
+                <p>Min:{this.getMinMax(list, 4, fifthDay)[0]} Max:{this.getMinMax(list, 4, fifthDay)[1]}</p>
             </div>
         );
     }
@@ -35,22 +39,12 @@ const {name, country} = DummyWeather.city
 const list = DummyWeather.list;
 
 const day = new Date();
-const firstDay = list.filter(item => item.dt_txt.includes(moment(day).subtract(0, 'days').format("YYYY-MM-DD")));
-const firstDayTemps = () => {
-    let min = firstDay[0].main.temp_min;
-    let max = firstDay[0].main.temp_max;
-    let minMaxArray = []
-
-    firstDay.forEach((forecast) => {
-        forecast.main.temp_min < min ? min = forecast.main.temp_min : min
-        forecast.main.temp_max > max ? max = forecast.main.temp_max : max
-    })
-    minMaxArray.push(min);
-    minMaxArray.push(max);
-    return minMaxArray;
-};
-
+const toDay = list.filter(item => item.dt_txt.includes(moment(day).subtract(0, 'days').format("YYYY-MM-DD")));
 const secondDay = list.filter(item => item.dt_txt.includes(moment(day).add(1, 'days').format("YYYY-MM-DD")));
+const thirdDay = list.filter(item => item.dt_txt.includes(moment(day).add(2, 'days').format("YYYY-MM-DD")));
+const fourthDay = list.filter(item => item.dt_txt.includes(moment(day).add(3, 'days').format("YYYY-MM-DD")));
+const fifthDay = list.filter(item => item.dt_txt.includes(moment(day).add(4, 'days').format("YYYY-MM-DD")));
+
 
 
 
