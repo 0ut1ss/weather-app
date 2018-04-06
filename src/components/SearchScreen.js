@@ -1,15 +1,20 @@
 import React from 'react';
-import {connect} from 'react-redux';    
+import {connect} from 'react-redux';
+import {forecast} from '../actions/forecast';    
 import PlacesAutocomplete from 'react-places-autocomplete';
 import { geocodeByAddress, geocodeByPlaceId, getLatLng } from 'react-places-autocomplete';
 
 
-export default class SearchScreen extends React.Component {
+ class SearchScreen extends React.Component {
 
-    state = {
-        queryText: "Athens, GR",
-        city: ''
+    constructor(props) {
+        super(props);
+        this.state = {
+            queryText: "Athens, GR",
+            city: {}
+        }
     }
+
 
     onChange = (queryText) => {
         this.setState(() =>({queryText}));
@@ -22,7 +27,9 @@ export default class SearchScreen extends React.Component {
         .then(results => getLatLng(results[0]))
         .then(latLng => {
             this.handleGetWeather(latLng.lat, latLng.lng)
-        })
+            this.props.history.push('/forecast')
+        }
+        )
         .catch(error => console.log('Error',error))
     }
 
@@ -35,14 +42,12 @@ export default class SearchScreen extends React.Component {
     
 
     handleGetWeather = (lat, lng) => {
+        let returnJson = {};
         fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lng}&units=metric&&APPID=00aacc4e5842a5270702d3cee87e54c1`)
         .then((response) => response.json())
-        .then((responseData) => {
-            this.setState(() => ({city: responseData}))
-            console.log(this.state.city);
-        })
+        .then((responseData) => this.props.dispatch(forecast(responseData)))
+        .catch(error => console.log('Error',error))
     }
-
 
 
     render () {
@@ -63,6 +68,19 @@ export default class SearchScreen extends React.Component {
             </div>
         );
     }
+}
+
+const mapStateToProps = (state) => {
+    return {
+        forecast: state.forecast
+    };
+};
+
+export default connect(mapStateToProps)(SearchScreen);
+
+const dummyObj = {
+    name: 'Dimitris',
+    profession: 'Developer'
 }
 
 

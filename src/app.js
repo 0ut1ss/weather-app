@@ -9,13 +9,14 @@ import {forecast} from './actions/forecast';
 import SearchScreen from './components/SearchScreen';
 import WeatherDisplayScreen from './components/WeatherDisplayScreen';
 
+
 const store = configureStore();
-store.dispatch(forecast({lat:30, long:60}));
+
 const state = store.getState();
 
 
 
-console.log(state);
+
 const jsx = (
     <Provider store = {store}>
         <AppRouter />
