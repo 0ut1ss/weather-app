@@ -4,12 +4,14 @@ import SearchScreen from '../components/SearchScreen';
 import WeatherDisplayScreen from '../components/WeatherDisplayScreen';
 import NotFoundPage from '../components/NotFoundPage';
 import Header from '../components/Header';
-// import DummyComp from '../components/DummyComp';
+import Sidebar from '../components/Sidebar';
+
 
 const AppRouter = () => (
     <BrowserRouter>
         <div>
             <Header />
+            <Sidebar />
             <Switch>
             <Route path = "/" component = {SearchScreen} exact = {true}/>
             <Route path = "/forecast" component = {WeatherDisplayScreen}/>
