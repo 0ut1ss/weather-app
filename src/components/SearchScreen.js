@@ -7,12 +7,10 @@ import { geocodeByAddress, geocodeByPlaceId, getLatLng } from 'react-places-auto
 
  class SearchScreen extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            queryText: "Athens, GR",
-            city: {}
-        }
+
+    state = {
+        queryText: "Athens, GR",
+        city: {}
     }
 
 
@@ -27,9 +25,9 @@ import { geocodeByAddress, geocodeByPlaceId, getLatLng } from 'react-places-auto
         .then(results => getLatLng(results[0]))
         .then(latLng => {
             this.handleGetWeather(latLng.lat, latLng.lng)
-            this.props.history.push('/forecast')
-        }
-        )
+        })
+        .then(this.props.history.push('/forecast'))
+
         .catch(error => console.log('Error',error))
     }
 
@@ -37,6 +35,7 @@ import { geocodeByAddress, geocodeByPlaceId, getLatLng } from 'react-places-auto
 
        handleAccessLocation = () => {
         navigator.geolocation.getCurrentPosition((position) => this.handleGetWeather(position.coords.latitude, position.coords.longitude));
+        this.props.history.push('/forecast')
     }
 
     
@@ -78,9 +77,5 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps)(SearchScreen);
 
-const dummyObj = {
-    name: 'Dimitris',
-    profession: 'Developer'
-}
 
 

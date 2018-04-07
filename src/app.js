@@ -8,13 +8,14 @@ import configureStore from './store/configureStore';
 import {forecast} from './actions/forecast';
 import SearchScreen from './components/SearchScreen';
 import WeatherDisplayScreen from './components/WeatherDisplayScreen';
+import DummyWeather from '../DummyWeather';
 
 
 const store = configureStore();
 
 const state = store.getState();
 
-
+store.dispatch(forecast(DummyWeather));
 
 
 const jsx = (

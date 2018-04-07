@@ -1,4 +1,4 @@
-export const forecast = (weather) => ({
+export const forecast = (weather = {}) => ({
     type: 'SET_COORDS',
-    city: weather
+     weather
 });

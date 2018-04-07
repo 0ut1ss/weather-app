@@ -4,6 +4,7 @@ import SearchScreen from '../components/SearchScreen';
 import WeatherDisplayScreen from '../components/WeatherDisplayScreen';
 import NotFoundPage from '../components/NotFoundPage';
 import Header from '../components/Header';
+// import DummyComp from '../components/DummyComp';
 
 const AppRouter = () => (
     <BrowserRouter>
