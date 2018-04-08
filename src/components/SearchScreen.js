@@ -55,15 +55,18 @@ import { geocodeByAddress, geocodeByPlaceId, getLatLng } from 'react-places-auto
             onChange: this.onChange
         }    
         return (
-            <div>
+            <div className="searchScreen">
+                <div className ="searchScreen__form">
                 <p>type a location:</p>
                 <form onSubmit={this.handleFormSubmit}>
                     <PlacesAutocomplete inputProps={inputProps} />
                     <button type="submit">Search</button>
                 </form>
-                <p>or give us your location:</p>
-                <button onClick = {this.handleAccessLocation}>access location</button>
-                <h3>{this.state.city.name}</h3>
+                </div>
+                <div className ="searchScreen__btn">
+                    <p>or give us your location:</p>
+                    <button onClick = {this.handleAccessLocation}>access location</button>
+                </div>
             </div>
         );
     }

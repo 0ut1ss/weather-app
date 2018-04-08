@@ -10,8 +10,8 @@ import Sidebar from '../components/Sidebar';
 const AppRouter = () => (
     <BrowserRouter>
         <div>
-            <Header />
             <Sidebar />
+            <Header />
             <Switch>
             <Route path = "/" component = {SearchScreen} exact = {true}/>
             <Route path = "/forecast" component = {WeatherDisplayScreen}/>

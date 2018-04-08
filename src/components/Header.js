@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 
 const Header = () => (
-    <div>
+    <div className="header">
         <Link to = "/"><img src="/images/umbrella.png"/> </Link>
     </div>
 );
