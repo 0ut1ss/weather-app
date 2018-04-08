@@ -12,6 +12,7 @@ import DummyWeather from '../DummyWeather';
 
 
 const store = configureStore();
+console.log('testing');
 
 const state = store.getState();
 
