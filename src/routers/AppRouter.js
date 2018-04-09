@@ -10,7 +10,6 @@ import Sidebar from '../components/Sidebar';
 const AppRouter = () => (
     <BrowserRouter>
         <div>
-            <Sidebar />
             <Header />
             <Switch>
             <Route path = "/" component = {SearchScreen} exact = {true}/>

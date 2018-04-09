@@ -2,6 +2,7 @@ import React from 'react';
 import DummyWeather from '../../DummyWeather.json';
 import {connect} from 'react-redux';
 import moment from 'moment';
+import Sidebar from './Sidebar';
 
 
 class WeatherDisplayScreen extends React.Component {
@@ -48,26 +49,46 @@ class WeatherDisplayScreen extends React.Component {
 
 
         return (
-            <div>
-                <h1>Weather Forecast</h1>
-                <h3>{name} - {country}</h3>
-                <h3>Forecasts</h3>
+            <div className="weatherdisplayscreen">
+                <Sidebar />
                 
-                <h4>{moment(this.day).format('dddd')}</h4>
-                <img src={`http://openweathermap.org/img/w/${this.getIcon(toDay)}.png`}/>
-                <p>Min:{this.getMinMax(toDay)[0]} Max:{this.getMinMax(toDay)[1]}</p>
-                <h4>{moment(this.day).add(1, 'days').format('dddd')}</h4>
-                <img src={`http://openweathermap.org/img/w/${this.getIcon(secondDay)}.png`}/>
-                <p>Min:{this.getMinMax(secondDay)[0]} Max:{this.getMinMax(secondDay)[1]}</p>
-                <h4>{moment(this.day).add(2, 'days').format('dddd')}</h4>
-                <img src={`http://openweathermap.org/img/w/${this.getIcon(thirdDay)}.png`}/>
-                <p>Min:{this.getMinMax(thirdDay)[0]} Max:{this.getMinMax(thirdDay)[1]}</p>
-                <h4>{moment(this.day).add(3, 'days').format('dddd')}</h4>
-                <img src={`http://openweathermap.org/img/w/${this.getIcon(fourthDay)}.png`}/>
-                <p>Min:{this.getMinMax(fourthDay)[0]} Max:{this.getMinMax(fourthDay)[1]}</p>
-                <h4>{moment(this.day).add(4, 'days').format('dddd')}</h4>
-                <img src={`http://openweathermap.org/img/w/${this.getIcon(fifthDay)}.png`}/>
-                <p>Min:{this.getMinMax(fifthDay)[0]} Max:{this.getMinMax(fifthDay)[1]}</p>
+                <div className=" forecasts-box forecasts-box--single">
+                    <div>
+                        <h4>Today</h4>
+                        <h4>{name} - {country}</h4>
+                        <img src={`http://openweathermap.org/img/w/${this.getIcon(toDay)}.png`}/>
+                        <p> Max:{this.getMinMax(toDay)[0]}</p>
+                        <p>Min:{this.getMinMax(toDay)[1]}</p>
+                    </div>
+                </div>
+
+                <div className="forecasts-box">
+                
+                        <div>
+                            <h4>{moment(this.day).add(1, 'days').format('dddd')}</h4>
+                            <img src={`http://openweathermap.org/img/w/${this.getIcon(secondDay)}.png`}/>
+                            <p>Max:{this.getMinMax(secondDay)[0]}</p>
+                            <p>Min:{this.getMinMax(secondDay)[1]}</p>
+                        </div>
+                        <div>
+                            <h4>{moment(this.day).add(2, 'days').format('dddd')}</h4>
+                            <img src={`http://openweathermap.org/img/w/${this.getIcon(thirdDay)}.png`}/>
+                            <p>Max:{this.getMinMax(thirdDay)[0]}</p>
+                            <p>Min:{this.getMinMax(thirdDay)[1]}</p>
+                        </div>
+                        <div>
+                            <h4>{moment(this.day).add(3, 'days').format('dddd')}</h4>
+                            <img src={`http://openweathermap.org/img/w/${this.getIcon(fourthDay)}.png`}/>
+                            <p>Max:{this.getMinMax(fourthDay)[0]}</p>
+                            <p>Min:{this.getMinMax(fourthDay)[1]}</p>
+                        </div>
+                        <div>
+                            <h4>{moment(this.day).add(4, 'days').format('dddd')}</h4>
+                            <img src={`http://openweathermap.org/img/w/${this.getIcon(fifthDay)}.png`}/>
+                            <p>Max:{this.getMinMax(fifthDay)[0]}</p>
+                            <p>Min:{this.getMinMax(fifthDay)[1]}</p>
+                        </div>
+                    </div>
             </div>
         );
     }

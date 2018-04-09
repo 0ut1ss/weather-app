@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 const Sidebar = (props) => (
 
 
-    <div>
-        <div id="mySidenav" className="sidenav">
+    <div className="sidebar">
+        <div id="mySidenav" className="sidebar__sidenav">
             <Link to = "javascript:void(0)" className="closebtn" onClick={closeNav}>&times;</Link>
             <h1>Your best weather app</h1>
             <Link to="#">Team</Link>

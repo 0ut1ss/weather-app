@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {forecast} from '../actions/forecast';    
 import PlacesAutocomplete from 'react-places-autocomplete';
 import { geocodeByAddress, geocodeByPlaceId, getLatLng } from 'react-places-autocomplete';
+import Sidebar from './Sidebar';
 
 
  class SearchScreen extends React.Component {
@@ -56,6 +57,7 @@ import { geocodeByAddress, geocodeByPlaceId, getLatLng } from 'react-places-auto
         }    
         return (
             <div className="searchScreen">
+                <Sidebar />
                 <div className ="searchScreen__form">
                 <p>type a location:</p>
                 <form onSubmit={this.handleFormSubmit}>
