@@ -2,6 +2,8 @@
 $redBg: #ff7070;
 $sidebarGreen: #6ffe90;
 $customPurple: #a970ff;
+$darkerPurple: #774fb3;
+$lighterPurple: #d3b5ff;
 // Spacing
 $s-size: 1.2rem;
 $m-size: 1.6rem;
@@ -11,3 +13,7 @@ $desktop-breakpoint: 45rem;
 
 //Fonts
 @font-face { font-family: Biko; src: url('/fonts/Biko_Regular.otf'); } 
+
+//Screen sizes
+$break-small: 360px;
+$break-medium: 768px;

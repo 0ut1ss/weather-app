@@ -2,29 +2,95 @@
     background-color: $redBg;
     height: 100vh;
     font-size: $l-size;
-    .searchScreen__form {
-        display: block;
-        color: white;
-        text-align: center;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-
-    .searchScreen__btn {
-        text-align: center;
-        color: white;
-        position: absolute;
-        top: 65%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-    .searchScreen_btn p {
-        display: block;
-    }
-
-    .searchScreen_btn button {
-        display: block;
-    }
+    color: white;
 }
+
+.searchbox {
+    width: 20vw;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    justify-content: space-around;
+    text-align: center;
+    padding: 0;
+
+    @media screen and (max-width: $break-small) {
+        width: 70vw;
+      }
+
+      @media screen and (max-width: $break-medium) {
+        width: 60vw;
+      }
+}
+
+.searchbox__form-root {
+    position: relative;
+
+    @media screen and (max-width: $break-small) {
+        font-size: $m-size;
+      }
+
+    @media screen and (max-width: $break-medium) {
+
+      }
+}
+
+.form__button {
+    position: absolute;
+    width: 4.5rem;
+    height: 4.5rem;
+    top: 0.7rem;
+    right: 3rem;
+    background-image: url("/images/magnifier.png");
+    background-repeat: no-repeat;
+    background-position: .8rem 0.8rem;
+    background-color: white;
+
+    @media screen and (max-width: $break-small) {
+        width: 3rem;
+        height: 3rem;
+        top: 0.4rem;
+        right: 1.5rem;
+        background-position: .2rem .2rem;
+      }
+
+    @media screen and (min-width: $break-medium) {
+        font-size: $m-size;
+        right: 4rem;
+      }
+}
+
+.locationbutton {
+    width: 70%;
+    height: 6rem;
+    align-self: center;
+    font-size: 2.5rem;
+    background-color: $sidebarGreen;
+    border: none;
+    color: $customPurple;
+    background-image: url("/images/send.png");
+    background-repeat: no-repeat;
+    background-position: 1.5rem 1.5rem;
+    text-indent: 4rem;
+
+    @media screen and (max-width: $break-small) {
+        font-size: $s-size;
+        height: 4rem;
+        background-size: 2rem;
+        background-position: 1.5rem 1rem;
+        text-indent: 2rem;
+      }
+
+      @media screen and (max-width: $break-medium) {
+        
+      }
+
+}
+
+
+

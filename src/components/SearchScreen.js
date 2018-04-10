@@ -10,7 +10,7 @@ import Sidebar from './Sidebar';
 
 
     state = {
-        queryText: "Athens, GR",
+        queryText: "type here...",
         city: {}
     }
 
@@ -54,22 +54,43 @@ import Sidebar from './Sidebar';
         const inputProps = {
             value: this.state.queryText,
             onChange: this.onChange
-        }    
+        }
+
+        const cssClasses = {
+            root: {
+                position: 'relative'
+            },
+            input: {
+                width: '80%',
+                color: '#d3b5ff',
+                boxShadow: '0 2px 2px #774fb3',
+                backgroundColor: '#a970ff',
+                border: 'none'
+            },
+            autocompleteContainer: {
+                width: '85%',
+                left: '7%'
+            }
+          }
+
+            
         return (
             <div className="searchScreen">
                 <Sidebar />
-                <div className ="searchScreen__form">
-                <p>type a location:</p>
-                <form onSubmit={this.handleFormSubmit}>
-                    <PlacesAutocomplete inputProps={inputProps} />
-                    <button type="submit">Search</button>
-                </form>
+                    <div className= "searchbox">
+                        <p>type a location:</p>
+                        <div className = "searchbox__form-root">
+                            <form onSubmit={this.handleFormSubmit}>
+                            <PlacesAutocomplete inputProps={inputProps} styles = {cssClasses}/>
+                            <button type="submit" className= "form__button"></button>
+                            </form>
+                        </div>
+                        <p>or give us your location:</p>
+
+                        <button onClick = {this.handleAccessLocation} className= "locationbutton">access location</button>
+                    </div>
                 </div>
-                <div className ="searchScreen__btn">
-                    <p>or give us your location:</p>
-                    <button onClick = {this.handleAccessLocation}>access location</button>
-                </div>
-            </div>
+
         );
     }
 }
@@ -81,6 +102,8 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps)(SearchScreen);
+
+
 
 
 
