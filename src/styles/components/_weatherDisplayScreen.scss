@@ -2,22 +2,58 @@
     background-color: $customPurple;
     height: 100vh;
     color: white;
-    .forecasts-box {
-        width: 50vw;
-        margin-left: auto;
-        margin-right: auto;
-        display: flex;
-        flex-direction: row;
-        position: absolute;
-        top: 70%;
-        left:50%;
-        transform: translate(-50%, -50%);
-        justify-content: space-around;
-    }
+    position: relative;
+}
 
-    .forecasts-box--single {
-        top: 40%;
-        font-size: $l-size;
-    }
+.forecasts-box {
+    width: 50vw;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    justify-content: space-around;
+    text-align: center;
 
+    @media screen and (max-width: $break-small) {
+        top: 55%;
+      }
+
+    @media screen and (min-width: $break-medium) {
+
+      }
+}
+.today {
+    font-size: $l-size;
+    @media screen and (max-width: $break-small) {
+        font-size: $m-size;
+    }
+}
+
+.multipleforecasts {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+.highlightColor {
+    color: $sidebarGreen;
+}
+
+.opacity {
+    opacity: .5;
+}
+
+.setpadding {
+    @media screen and (max-width: $break-small) {
+        padding: 0 .7rem 0 .7rem;
+      }
+
+      @media screen and (min-width: $break-medium) {
+        padding: 0 5rem 0 5rem;
+    }
 }
