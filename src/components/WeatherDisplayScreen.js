@@ -3,11 +3,16 @@ import DummyWeather from '../../DummyWeather.json';
 import {connect} from 'react-redux';
 import moment from 'moment';
 import Sidebar from './Sidebar';
+import Loader from 'react-loader';
 
 
 class WeatherDisplayScreen extends React.Component {
      
     day = new Date();
+
+    state = {
+        loaded: false
+    }
 
     
     getDay = (tlist, dayNumber) => tlist.filter(item => item.dt_txt.includes(moment(this.day).add(dayNumber, 'days').format("YYYY-MM-DD")));
@@ -74,16 +79,20 @@ class WeatherDisplayScreen extends React.Component {
 
     getMinMax = (forecasts) => {
         const DayTemperatures = () => {
-            let tmin = 0;
-            let tmax;
             let minMaxArray = [];
             forecasts.forEach((forecast) => {
-            forecast.main.temp > tmin ? tmin = forecast.main.temp : tmax = forecast.main.temp;
+            minMaxArray.push(forecast.main.temp);
         })
-            return minMaxArray = [Math.round(tmin), Math.round(tmax)];
+            return minMaxArray = [Math.round(Math.max(...minMaxArray)), Math.round(Math.min(...minMaxArray))];
         };
         return DayTemperatures();
     };
+
+    componentDidMount = () => {
+        setTimeout(() => {this.setState({loaded: true})}, 2000);
+    }
+
+    
 
     render () {
 
@@ -99,48 +108,50 @@ class WeatherDisplayScreen extends React.Component {
 
 
         return (
-            <div className="weatherdisplayscreen">
-                <Sidebar />
-                
-                <div className=" forecasts-box">
-                    <div className= "today">
-                        <h4 className = "highlightColor">Today</h4>
-                        <h4>{name} - {country}</h4>
-                        <img src={this.getIcon(toDay, true)}/>
-                        <p className = "highlightColor"> {this.getMinMax(toDay)[0]}</p>
-                        <p className = "highlightColor opacity">{this.getMinMax(toDay)[1]}</p>
-                    </div>
-                
-
-                    <div className= "multipleforecasts">
+            <Loader loaded = {this.state.loaded} className = "loader" color = "#6ffe90">
+                    <div>
+                    <Sidebar />
                     
-                            <div className= "setpadding">
-                                <h4>{moment(this.day).add(1, 'days').format('dddd')}</h4>
-                                <img src={this.getIcon(secondDay, false)}/>
-                                <p className = "highlightColor">{this.getMinMax(secondDay)[0]}</p>
-                                <p className = "highlightColor opacity">{this.getMinMax(secondDay)[1]}</p>
-                            </div>
-                            <div className= "setpadding">
-                                <h4>{moment(this.day).add(2, 'days').format('dddd')}</h4>
-                                <img src={this.getIcon(thirdDay, false)}/>
-                                <p className = "highlightColor">{this.getMinMax(thirdDay)[0]}</p>
-                                <p className = "highlightColor opacity">{this.getMinMax(thirdDay)[1]}</p>
-                            </div>
-                            <div className= "setpadding">
-                                <h4>{moment(this.day).add(3, 'days').format('dddd')}</h4>
-                                <img src={this.getIcon(fourthDay, false)}/>
-                                <p className = "highlightColor">{this.getMinMax(fourthDay)[0]}</p>
-                                <p className = "highlightColor opacity">{this.getMinMax(fourthDay)[1]}</p>
-                            </div>
-                            <div className= "setpadding">
-                                <h4>{moment(this.day).add(4, 'days').format('dddd')}</h4>
-                                <img src={this.getIcon(fifthDay, false)}/>
-                                <p className = "highlightColor">{this.getMinMax(fifthDay)[0]}</p>
-                                <p className = "highlightColor opacity">{this.getMinMax(fifthDay)[1]}</p>
+                    <div className = "weatherbox">
+                        <div className = "today">
+                            <h4 className = "highlightColor">Today</h4>
+                            <h4>{name} - {country}</h4>
+                            <img src={this.getIcon(toDay, true)}/>
+                            <p className = "highlightColor"> {this.getMinMax(toDay)[0]}</p>
+                            <p className = "highlightColor opacity">{this.getMinMax(toDay)[1]}</p>
+                        </div>
+                            <div className = "rest">
+                                <div>
+                                    <h4>{moment(this.day).add(1, 'days').format('dddd')}</h4>
+                                    <img src={this.getIcon(secondDay, false)}/>
+                                    <p className = "highlightColor">{this.getMinMax(secondDay)[0]}</p>
+                                    <p className = "highlightColor opacity">{this.getMinMax(secondDay)[1]}</p>
+                                </div>
+
+                                <div>
+                                    <h4>{moment(this.day).add(2, 'days').format('dddd')}</h4>
+                                    <img src={this.getIcon(thirdDay, false)}/>
+                                    <p className = "highlightColor">{this.getMinMax(thirdDay)[0]}</p>
+                                    <p className = "highlightColor opacity">{this.getMinMax(thirdDay)[1]}</p>
+                                </div>
+
+                                <div>
+                                    <h4>{moment(this.day).add(3, 'days').format('dddd')}</h4>
+                                    <img src={this.getIcon(fourthDay, false)}/>
+                                    <p className = "highlightColor">{this.getMinMax(fourthDay)[0]}</p>
+                                    <p className = "highlightColor opacity">{this.getMinMax(fourthDay)[1]}</p>
+                                </div>
+
+                                <div>
+                                    <h4>{moment(this.day).add(4, 'days').format('dddd')}</h4>
+                                    <img src={this.getIcon(fifthDay, false)}/>
+                                    <p className = "highlightColor">{this.getMinMax(fifthDay)[0]}</p>
+                                    <p className = "highlightColor opacity">{this.getMinMax(fifthDay)[1]}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-            </div>
+                </div>
+            </Loader>
         );
     }
 }

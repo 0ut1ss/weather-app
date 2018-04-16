@@ -7,10 +7,12 @@ const Sidebar = (props) => (
     <div className="sidebar">
         <div id="mySidenav" className="sidebar__sidenav">
             <Link to = "javascript:void(0)" className="closebtn" onClick={closeNav}>&times;</Link>
-            <h1>Your best weather app</h1>
-            <Link to="#">Team</Link>
-            <Link to="#">History</Link>
-            <Link to="#">Contact</Link>
+            <div className= "sidebar-content">
+                <h1 className = "title">Your best weather app</h1>
+                <Link to="#">Team</Link>
+                <Link to="#">History</Link>
+                <Link to="#">Contact</Link>
+            </div>
         </div>
         
         <span className= "spanStyle" onClick={openNav}> &#8801; </span>
@@ -18,12 +20,12 @@ const Sidebar = (props) => (
 );
 
 const openNav = () => {
-    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("mySidenav").classList.replace('sidebar__sidenav','sidenav__expand');
 }
 
 const closeNav = (e) => {
     e.preventDefault();
-    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("mySidenav").classList.replace('sidenav__expand', 'sidebar__sidenav');
 }
 
 const test = () => console.log('testing');

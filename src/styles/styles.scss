@@ -1,5 +1,7 @@
 @import './base/settings';
 @import './base/base';
+@import './base/_mixins.scss';
+@import './components/_loader.scss';
 @import './components/_sidebar.scss';
 @import './components/_header.scss';
 @import './components/_searchScreen.scss';

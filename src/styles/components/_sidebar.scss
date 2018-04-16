@@ -1,43 +1,70 @@
 .sidebar {
     background-color: transparent;
-    .sidebar__sidenav {
-        height: 100%;
-        width: 0;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        background-color: $sidebarGreen;
-        overflow-x: hidden;
-        transition: 0.5s;
-        padding-top: 60px;
-        h1 {
-            padding: 8px 8px 8px 32px;
-            font-size: 25px;
-            color: white;
-            display: table-caption;
-            margin-bottom: 150px;
-            transition: 0.3s;
-        }
-        a {
-            padding: 8px 8px 8px 32px;
-            text-decoration: none;
-            font-size: 25px;
-            color: $customPurple;
-            display: block;
-            transition: 0.3s;
-            &:hover {
-                color: #f1f1f1;
-            }
-        }
-        .closebtn {
-            position: absolute;
-            top: 0;
-            right: 25px;
-            font-size: 36px;
-            margin-left: 50px;
+
+}
+
+.sidebar__sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 30;
+    top: 0;
+    left: 0;
+    background-color: $sidebarGreen;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    font-size: 2.5rem;
+    h1 {
+        padding: 8px 8px 8px 32px;
+        color: white;
+        display: table-caption;
+        margin-bottom: 150px;
+        transition: 0.3s;
+        font-size: 1.5em;
+    }
+    a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        color: $customPurple;
+        display: block;
+        transition: 0.3s;
+        &:hover {
+            color: #f1f1f1;
         }
     }
+}
+
+.sidenav__expand {
+    @extend .sidebar__sidenav;
+    width: 25rem;
+
+    @media screen and (max-width: $break-small) {
+        width: 100%;
+        h1 {
+            margin-bottom: 50px;
+        }
+      }
+
+    @media screen and (min-width: $break-medium) {
+        width: 18rem;
+      }
+}
+
+.sidebar-content {
+    @media screen and (max-width: $break-small) {
+        position: absolute;
+        transform: translateX(70%);
+
+      }
+}
+
+.closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
 }
 
 .spanStyle {
@@ -46,13 +73,4 @@
     position: absolute;
     left: 2rem;
     cursor: pointer;
-}
-
-@media screen and (max-height: 450px) {
-    .sidenav {
-        padding-top: 15px;
-    }
-    .sidenav a {
-        font-size: 18px;
-    }
 }

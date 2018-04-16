@@ -3,15 +3,16 @@
     height: 100vh;
     font-size: $l-size;
     color: white;
+    position: relative;
 }
 
 .searchbox {
-    width: 20vw;
+
     margin-left: auto;
     margin-right: auto;
     display: flex;
     flex-direction: column;
-    position: absolute;
+    position: fixed;
     top: 50%;
     left:50%;
     transform: translate(-50%, -50%);
@@ -19,50 +20,41 @@
     text-align: center;
     padding: 0;
 
-    @media screen and (max-width: $break-small) {
-        width: 70vw;
+    @include for-phone-only {
+        width: 90vw;
+    }
+
+      @include for-tablet-portrait-up {
+          width: 70vw;
       }
 
-      @media screen and (max-width: $break-medium) {
-        width: 60vw;
+      @include for-tablet-landscape-up {
+          width: 60vw;
       }
+
+      @include for-desktop-up {
+         width: 40vw; 
+    }
+
 }
 
 .searchbox__form-root {
+
     position: relative;
-
-    @media screen and (max-width: $break-small) {
-        font-size: $m-size;
-      }
-
-    @media screen and (max-width: $break-medium) {
-
-      }
 }
 
 .form__button {
     position: absolute;
-    width: 4.5rem;
-    height: 4.5rem;
-    top: 0.7rem;
-    right: 3rem;
+    width: 5rem;
+    height: 5rem;
+    top: 10%;
+    right: 9%;
     background-image: url("/images/magnifier.png");
     background-repeat: no-repeat;
-    background-position: .8rem 0.8rem;
+    background-position: 0.6rem 0.6rem;
     background-color: white;
+    background-size: 3rem;
 
-    @media screen and (max-width: $break-small) {
-        width: 3rem;
-        height: 3rem;
-        top: 0.4rem;
-        right: 1.5rem;
-        background-position: .2rem .2rem;
-      }
-
-    @media screen and (min-width: $break-medium) {
-        font-size: $m-size;
-        right: 4rem;
-      }
 }
 
 .locationbutton {
@@ -75,22 +67,35 @@
     color: $customPurple;
     background-image: url("/images/send.png");
     background-repeat: no-repeat;
-    background-position: 1.5rem 1.5rem;
-    text-indent: 4rem;
+    background-position: 25% 50%;
+    text-indent: 25%;
 
-    @media screen and (max-width: $break-small) {
-        font-size: $s-size;
-        height: 4rem;
-        background-size: 2rem;
-        background-position: 1.5rem 1rem;
-        text-indent: 2rem;
+    @include for-phone-only {
+        background-position: 10% 50%;
+        font-size: 65%;
+        width: 60%;
+        text-indent: 20%;
       }
 
-      @media screen and (max-width: $break-medium) {
-        
+      @include for-tablet-portrait-up  {
+        background-position: 10% 50%;
+        width:60%;
+        text-indent: 15%;
       }
+
+      @include for-tablet-landscape-up {
+        width: 50%;
+        background-position: 10% 50%;
+        text-indent: 5%;
+      }
+
+      
+      @include for-desktop-up {
+          text-indent: 25%;
+   }
 
 }
+
 
 
 

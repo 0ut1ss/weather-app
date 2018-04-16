@@ -4,6 +4,7 @@ import {forecast} from '../actions/forecast';
 import PlacesAutocomplete from 'react-places-autocomplete';
 import { geocodeByAddress, geocodeByPlaceId, getLatLng } from 'react-places-autocomplete';
 import Sidebar from './Sidebar';
+import Loader from 'react-loader';
 
 
  class SearchScreen extends React.Component {
@@ -11,7 +12,8 @@ import Sidebar from './Sidebar';
 
     state = {
         queryText: "type here...",
-        city: {}
+        city: {},
+        loaded: false
     }
 
 
@@ -49,6 +51,10 @@ import Sidebar from './Sidebar';
         .catch(error => console.log('Error',error))
     }
 
+    componentDidMount = () => {
+        setTimeout(() => {this.setState({loaded: true})}, 2000);
+    } 
+
 
     render () {
         const inputProps = {
@@ -62,6 +68,7 @@ import Sidebar from './Sidebar';
             },
             input: {
                 width: '80%',
+                height: '4rem',
                 color: '#d3b5ff',
                 boxShadow: '0 2px 2px #774fb3',
                 backgroundColor: '#a970ff',
@@ -75,7 +82,8 @@ import Sidebar from './Sidebar';
 
             
         return (
-            <div className="searchScreen">
+            <Loader loaded = {this.state.loaded} className = "loader" color = "#6ffe90">
+                <div className="searchScreen">
                 <Sidebar />
                     <div className= "searchbox">
                         <p>type a location:</p>
@@ -90,7 +98,7 @@ import Sidebar from './Sidebar';
                         <button onClick = {this.handleAccessLocation} className= "locationbutton">access location</button>
                     </div>
                 </div>
-
+             </Loader>
         );
     }
 }
