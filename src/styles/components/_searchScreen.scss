@@ -4,42 +4,50 @@
     font-size: $l-size;
     color: white;
     position: relative;
+
 }
 
 .searchbox {
-
+    width: 90vw;
+    height: auto;
     margin-left: auto;
     margin-right: auto;
     display: flex;
     flex-direction: column;
-    position: fixed;
+    position: absolute;
     top: 50%;
     left:50%;
     transform: translate(-50%, -50%);
     justify-content: space-around;
     text-align: center;
     padding: 0;
+    z-index: 100;
 
-    @include for-phone-only {
-        width: 90vw;
+    @include for-phone-only-landscape {
+        top: 65%;
+        font-size: 2rem;
+
+        justify-content: space-between;
     }
 
-      @include for-tablet-portrait-up {
-          width: 70vw;
-      }
-
-      @include for-tablet-landscape-up {
-          width: 60vw;
-      }
-
-      @include for-desktop-up {
-         width: 40vw; 
+    @include for-tablet-portrait-up {
+        top: 45%;
+        width: 75vw;
     }
 
+    @include for-tablet-landscape-up {
+        top: 40%;
+        width: 50vw;
+        font-size: $l-size;
+    }
+
+    @include for-desktop-up {
+        top: 50%;
+        width: 40vw;
+    }
 }
 
 .searchbox__form-root {
-
     position: relative;
 }
 
@@ -54,45 +62,28 @@
     background-position: 0.6rem 0.6rem;
     background-color: white;
     background-size: 3rem;
-
 }
 
 .locationbutton {
     width: 70%;
     height: 6rem;
     align-self: center;
-    font-size: 2.5rem;
+    font-size: 2rem;
     background-color: $sidebarGreen;
     border: none;
     color: $customPurple;
     background-image: url("/images/send.png");
     background-repeat: no-repeat;
-    background-position: 25% 50%;
-    text-indent: 25%;
+    background-position: 10% 50%;
+    text-indent: 20%;
 
-    @include for-phone-only {
-        background-position: 10% 50%;
-        font-size: 65%;
-        width: 60%;
-        text-indent: 20%;
-      }
+    @include for-phone-only-landscape {
+        width: 55%;
+    }
 
-      @include for-tablet-portrait-up  {
-        background-position: 10% 50%;
-        width:60%;
-        text-indent: 15%;
-      }
-
-      @include for-tablet-landscape-up {
-        width: 50%;
-        background-position: 10% 50%;
-        text-indent: 5%;
-      }
-
-      
-      @include for-desktop-up {
-          text-indent: 25%;
-   }
+    @include for-tablet-portrait-up {
+        width: 40%;
+    }
 
 }
 

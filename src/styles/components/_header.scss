@@ -1,7 +1,21 @@
 .header {
     position: absolute;
+    width: 10vw;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
     top: 10%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 25;
+
+    @include for-phone-only-landscape {
+        img {
+            height: auto; 
+            width: auto; 
+            max-width: 45px; 
+            max-height: 45px;
+        }
+    }
 }

@@ -1,16 +1,18 @@
 body {
     background-color: $customPurple;
     font-size: 2rem;
+    color: white;
 }
 
 .weatherbox {
     width: 60vw;
+    height: 100vh;
     position: absolute;
     margin-left: auto;
     margin-right: auto;
     top: 55%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -40%);
     text-align: center;
     display: flex;
     flex-direction: row;
@@ -21,8 +23,16 @@ body {
         width: 80vw;
     }
 
+    @include for-tablet-landscape-up {
+        top: 68%;
+        transform: translate(-50%, -50%);
+        justify-content: space-between;
+    }
+
     @include for-desktop-up {
         width: 60vw;
+        top: 62%;
+
     }
 }
 
@@ -30,20 +40,50 @@ body {
     width: 100%;
     padding-bottom: 1%;
     font-size: $l-size;
+    
+    @include for-phone-only-landscape {
+        padding-bottom: 0;
+        font-size: 2rem;
+        padding-top: 5%;
+    }
+
+    @include for-tablet-portrait-up {
+        transform: translateY(-5%);
+        padding-top: 10%;
+    }
+
+    @include for-tablet-landscape-up {
+        padding-bottom: 0;
+        padding-top: 0;
+        transform: translateY(10%);
+    }
+
+    @include for-desktop-up {
+        font-size: 2.5rem;
+
+    }
+
+    @include for-big-desktop-up {
+        transform: translateY(10%);
+        font-size: $l-size;
+    }
 }
 
 .rest {
     width: 100%;
     display: inline-flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
 
-    @include for-phone-only {
-        flex-direction: column;
-    }
 
     @include for-tablet-portrait-up {
-        justify-content: space-around;
+        flex-direction: row;
+        transform: translateY(-20%);
+    }
+
+    @include for-desktop-up {
+        transform: translateY(-10%);
+        
     }
 }
 .highlightColor {
@@ -54,5 +94,3 @@ body {
     opacity: .5;
 }
 
-.setpadding {
-}

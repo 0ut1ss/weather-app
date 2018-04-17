@@ -1,8 +1,15 @@
 @mixin for-phone-only {
-    @media (max-width: 599px) {
+    @media only screen and (max-width: 599px) {
         @content;
     }
 }
+
+@mixin for-phone-only-landscape {
+    @media only screen and (orientation: landscape) {
+        @content;
+    }
+}
+
 
 @mixin for-tablet-portrait-up {
     @media (min-width: 600px) {
