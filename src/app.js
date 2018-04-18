@@ -9,6 +9,9 @@ import {forecast} from './actions/forecast';
 import SearchScreen from './components/SearchScreen';
 import WeatherDisplayScreen from './components/WeatherDisplayScreen';
 import DummyWeather from '../DummyWeather';
+import Credits from './components/Credits';
+import Contact from './components/Contact';
+import About from './components/About';
 
 
 const store = configureStore();

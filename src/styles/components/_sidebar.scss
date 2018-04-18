@@ -19,7 +19,6 @@
         padding: 8px 8px 8px 32px;
         color: white;
         display: table-caption;
-        margin-bottom: 150px;
         transition: 0.3s;
         font-size: 1.5em;
     }
@@ -39,23 +38,33 @@
     @extend .sidebar__sidenav;
     width: 25rem;
 
-    @media screen and (max-width: $break-small) {
+    @include for-phone-only {
         width: 100%;
         h1 {
             margin-bottom: 50px;
         }
       }
 
-    @media screen and (min-width: $break-medium) {
+
+    @include  for-tablet-portrait-up {
         width: 18rem;
       }
 }
 
 .sidebar-content {
-    @media screen and (max-width: $break-small) {
-        position: absolute;
-        transform: translateX(70%);
+    position: absolute;
+    margin-top: auto;
+    margin-bottom: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    @include for-phone-only-landscape {
+        transform: translate(-50%, -62%);
+      }
 
+      @include for-tablet-portrait-up {
+          font-size: 1.5rem;
       }
 }
 

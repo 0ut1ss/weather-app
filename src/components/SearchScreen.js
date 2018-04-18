@@ -42,7 +42,7 @@ import Sidebar from './Sidebar';
 
     handleGetWeather = (lat, lng) => {
         let returnJson = {};
-        fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lng}&units=metric&&APPID=00aacc4e5842a5270702d3cee87e54c1`)
+        fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lng}&units=metric&&APPID=00aacc4e5842a5270702d3cee87e54c1`)
         .then((response) => response.json())
         .then((responseData) => this.props.dispatch(forecast(responseData)))
         .catch(error => console.log('Error',error))

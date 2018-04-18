@@ -1,0 +1,14 @@
+body {
+    background-color: $redBg;
+}
+
+.warning {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    flex-flow: column;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

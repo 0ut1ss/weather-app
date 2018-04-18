@@ -9,9 +9,9 @@ const Sidebar = (props) => (
             <Link to = "javascript:void(0)" className="closebtn" onClick={closeNav}>&times;</Link>
             <div className= "sidebar-content">
                 <h1 className = "title">Your best weather app</h1>
-                <Link to="#">Team</Link>
-                <Link to="#">History</Link>
-                <Link to="#">Contact</Link>
+                <Link to="/about">About us</Link>
+                <Link to="/credits">Credits</Link>
+                <Link to="/contact">Contact</Link>
             </div>
         </div>
         

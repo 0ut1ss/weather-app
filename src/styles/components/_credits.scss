@@ -1,0 +1,24 @@
+body {
+    background-color: $redBg;
+}
+
+.credits {
+    width: 80vw;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    flex-flow: column;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+
+    @include for-phone-only-landscape {
+        font-size: 1.3rem;
+    }
+
+    @include for-tablet-landscape-up {
+        font-size: 2.5rem;
+        top: 45%;
+    }
+}
