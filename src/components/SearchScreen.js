@@ -65,10 +65,11 @@ import { geocodeByAddress, geocodeByPlaceId, getLatLng } from 'react-places-auto
                 paddingRight: '0',
                 borderRadius: '2rem 2rem',
                 color: '#fff',
-                outline: 'none'
+                outline: 'none',
             },
             root: {
                 border: '0',
+                width: '80%'
             }
           }
 

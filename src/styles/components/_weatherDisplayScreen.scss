@@ -1,96 +1,174 @@
-body {
-    background-color: $customPurple;
-    font-size: 2rem;
-    color: white;
-}
+// body {
+//     background-color: $customPurple;
+//     font-size: 2rem;
+//     color: white;
+// }
+
+// .weatherbox {
+//     width: 60vw;
+//     height: 100vh;
+//     position: absolute;
+//     margin-left: auto;
+//     margin-right: auto;
+//     top: 55%;
+//     left: 50%;
+//     transform: translate(-50%, -40%);
+//     text-align: center;
+//     display: flex;
+//     flex-direction: row;
+//     flex-wrap: wrap;
+//     justify-content: space-around;
+
+//     @include for-tablet-portrait-up {
+//         width: 80vw;
+//     }
+
+//     @include for-tablet-landscape-up {
+//         top: 68%;
+//         transform: translate(-50%, -50%);
+//         justify-content: space-between;
+//     }
+
+//     @include for-desktop-up {
+//         width: 60vw;
+//         top: 62%;
+
+//     }
+// }
+
+// .today {
+//     width: 100%;
+//     padding-bottom: 1%;
+//     font-size: $l-size;
+    
+//     @include for-phone-only-landscape {
+//         padding-bottom: 0;
+//         font-size: 2rem;
+//         padding-top: 5%;
+//     }
+
+//     @include for-tablet-portrait-up {
+//         transform: translateY(-5%);
+//         padding-top: 10%;
+//     }
+
+//     @include for-tablet-landscape-up {
+//         padding-bottom: 0;
+//         padding-top: 0;
+//         transform: translateY(10%);
+//     }
+
+//     @include for-desktop-up {
+//         font-size: 2.5rem;
+
+//     }
+
+//     @include for-big-desktop-up {
+//         transform: translateY(10%);
+//         font-size: $l-size;
+//     }
+// }
+
+// .rest {
+//     width: 100%;
+//     display: inline-flex;
+//     flex-direction: column;
+//     justify-content: space-around;
+
+
+//     @include for-tablet-portrait-up {
+//         flex-direction: row;
+//         transform: translateY(-20%);
+//     }
+
+//     @include for-desktop-up {
+//         transform: translateY(-10%);
+        
+//     }
+// }
+// .highlightColor {
+//     color: $sidebarGreen;
+// }
+
+// .opacity {
+//     opacity: .5;
+// }
 
 .weatherbox {
-    width: 60vw;
-    height: 100vh;
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    top: 55%;
-    left: 50%;
-    transform: translate(-50%, -40%);
-    text-align: center;
+    width: 100vw;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-
-    @include for-tablet-portrait-up {
-        width: 80vw;
-    }
-
-    @include for-tablet-landscape-up {
-        top: 68%;
-        transform: translate(-50%, -50%);
-        justify-content: space-between;
-    }
-
-    @include for-desktop-up {
-        width: 60vw;
-        top: 62%;
-
-    }
-}
-
-.today {
-    width: 100%;
-    padding-bottom: 1%;
-    font-size: $l-size;
-    
-    @include for-phone-only-landscape {
-        padding-bottom: 0;
-        font-size: 2rem;
-        padding-top: 5%;
-    }
-
-    @include for-tablet-portrait-up {
-        transform: translateY(-5%);
-        padding-top: 10%;
-    }
-
-    @include for-tablet-landscape-up {
-        padding-bottom: 0;
-        padding-top: 0;
-        transform: translateY(10%);
-    }
-
-    @include for-desktop-up {
-        font-size: 2.5rem;
-
-    }
-
-    @include for-big-desktop-up {
-        transform: translateY(10%);
-        font-size: $l-size;
-    }
-}
-
-.rest {
-    width: 100%;
-    display: inline-flex;
     flex-direction: column;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+    color: #fff;
 
-
-    @include for-tablet-portrait-up {
+        @include for-tablet-landscape-up {
         flex-direction: row;
-        transform: translateY(-20%);
+        justify-content: space-around;
     }
 
-    @include for-desktop-up {
-        transform: translateY(-10%);
-        
+
+    &__divider {
+        width: 80vw;
+        opacity: .2;
+
+        @include for-tablet-landscape-up {
+            display: none;
+        }
+    }
+
+    &__location {
+        display: flex;
+        font-size: 2.5rem;
+        text-shadow: .3rem 0.3rem .4rem darken($redBg, 50%);
+        background-color: rgba(black, 0.1);
+        box-shadow: .2rem .2rem .8rem black;
+        border-radius: 2rem 2rem;
+        padding: 1rem 1rem;  
+
     }
 }
-.highlightColor {
-    color: $sidebarGreen;
-}
 
-.opacity {
-    opacity: .5;
-}
+.forecastbox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 2.5rem;
 
+    h4 {
+        text-shadow: .3rem 0.3rem .4rem darken($redBg, 50%);
+    }
+
+    &-today {
+        @include for-tablet-landscape-up {
+            width: 100%;
+            margin-bottom: 10rem;
+        }
+    }
+
+    &-header__icon {
+        width: 9rem;
+        height: 9rem;
+        fill: #fff;
+
+    }
+
+    &__temperature {
+        color: $sidebarGreen;
+        margin: 0;
+
+        &-opacity {
+            opacity: .5;
+        }
+    }
+
+    &__temperatures {
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+}

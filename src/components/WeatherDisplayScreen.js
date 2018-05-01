@@ -16,7 +16,7 @@ class WeatherDisplayScreen extends React.Component {
     
     getDay = (tlist, dayNumber) => tlist.filter(item => item.dt_txt.includes(moment(this.day).add(dayNumber, 'days').format("YYYY-MM-DD")));
 
-    getIcon = (forecasts, isToday) => {
+    getIcon = (forecasts) => {
         let icons = [];
         forecasts.forEach((forecast) => {
             icons.push(forecast.weather[0].icon)
@@ -24,51 +24,47 @@ class WeatherDisplayScreen extends React.Component {
         switch(icons[0]) {
             case '04d':
             case '04n':
-            return isToday ? '/images/weather_icons/lg/broken_clouds_lg.png' : '/images/weather_icons/sm/broken_clouds_sm.png'
+            return "images/sprite2.svg#icon-cloudy2"
             break;
             
             case '01d':
             case'01n':
-            return isToday ? '/images/weather_icons/lg/clear_sky_lg.png' 
-            : '/images/weather_icons/sm/clear_sky_sm.png'
+            return "images/sprite2.svg#icon-sun"
             break;
             
             case '02d':
             case'02n':
-            return isToday ? '/images/weather_icons/lg/few_clouds_lg.png' : '/images/weather_icons/sm/few_clouds_sm.png'
+            return "images/sprite2.svg#icon-cloudy"
             break;
             
             case '50d':
             case '50n':
-            return isToday ? '/images/weather_icons/lg/mist_lg.png' 
-            : '/images/weather_icons/sm/mist_sm.png'
+            return "images/sprite2.svg#icon-lines"
             break;
             
             case '10d':
             case '10n':
-            return isToday ? '/images/weather_icons/lg/rain_lg.png' 
-            : '/images/weather_icons/sm/rain_sm.png'
+            return "images/sprite2.svg#icon-rainy2"
             break;
             
             case '03d':
             case '03n':
-            return isToday ? '/images/weather_icons/lg/scattered_clouds_lg.png' : '/images/weather_icons/sm/scattered_clouds_sm.png'
+            return "images/sprite2.svg#icon-cloud"
             break;
             
             case '09d':
             case '09n':
-            return isToday ? '/images/weather_icons/lg/shower_rain_lg.png' : '/images/weather_icons/sm/shower_rain_sm.png'
+            return "images/sprite2.svg#icon-rainy"
             break;
             
             case '13d':
             case '13n':
-            return isToday ? '/images/weather_icons/lg/snow_lg.png' 
-            : '/images/weather_icons/sm/snow_sm.png'
+            return "images/sprite2.svg#icon-snowy"
             break;
             
             case '11d':
             case '11n':
-            return isToday ? '/images/weather_icons/lg/thunderstorm_lg.png' : '/images/weather_icons/sm/thunderstorm_sm.png'
+            return "images/sprite2.svg#icon-lightning"
             break; 
         }
         
@@ -110,42 +106,68 @@ class WeatherDisplayScreen extends React.Component {
             <Loader loaded = {this.state.loaded} className = "loader" color = "#6ffe90">
 
                         <div className = "weatherbox">
-                                <div className = "today">
+                                <h4 className="weatherbox__location">{name} - {country}</h4>
+                                <div className = "forecastbox forecastbox-today">
                                     <h4 className = "highlightColor">Today</h4>
-                                    <h4>{name} - {country}</h4>
-                                    <img src={this.getIcon(toDay, true)}/>
-                                    <p className = "highlightColor"> {this.getMinMax(toDay)[0]}</p>
-                                    <p className = "highlightColor opacity">{this.getMinMax(toDay)[1]}</p>
+                                    <svg className="forecastbox-header__icon forecastbox-header__icon-large">
+                                        <use xlinkHref={this.getIcon(toDay)}/>
+                                    </svg>
+                                    <div className="forecastbox__temperatures">
+                                        <p className = "forecastbox__temperature"> {this.getMinMax(toDay)[0]}</p>
+                                        <p className = "forecastbox__temperature forecastbox__temperature-opacity">{this.getMinMax(toDay)[1]}</p>
+                                    </div>
                                 </div>
-                                <div className = "rest">
-                                    <div>
+                                    <hr className="weatherbox__divider"/>
+
+                                    <div className = "forecastbox">
                                         <h4>{moment(this.day).add(1, 'days').format('dddd')}</h4>
-                                        <img src={this.getIcon(secondDay, false)}/>
-                                        <p className = "highlightColor">{this.getMinMax(secondDay)[0]}</p>
-                                        <p className = "highlightColor opacity">{this.getMinMax(secondDay)[1]}</p>
+                                        <svg className="forecastbox-header__icon">
+                                            <use xlinkHref={this.getIcon(secondDay)}/>
+                                        </svg>
+                                        <div className="forecastbox__temperatures">
+                                            <p className = "forecastbox__temperature">{this.getMinMax(secondDay)[0]}</p>
+                                            <p className = "forecastbox__temperature forecastbox__temperature-opacity">{this.getMinMax(secondDay)[1]}</p>
+                                        </div>
                                     </div>
 
-                                    <div>
+                                    <hr className="weatherbox__divider"/>
+
+                                    <div className = "forecastbox">
                                         <h4>{moment(this.day).add(2, 'days').format('dddd')}</h4>
-                                        <img src={this.getIcon(thirdDay, false)}/>
-                                        <p className = "highlightColor">{this.getMinMax(thirdDay)[0]}</p>
-                                        <p className = "highlightColor opacity">{this.getMinMax(thirdDay)[1]}</p>
+                                        <svg className="forecastbox-header__icon">
+                                            <use xlinkHref={this.getIcon(thirdDay)}/>
+                                        </svg>
+                                        <div className="forecastbox__temperatures">
+                                            <p className = "forecastbox__temperature">{this.getMinMax(thirdDay)[0]}</p>
+                                            <p className = "forecastbox__temperature forecastbox__temperature-opacity">{this.getMinMax(thirdDay)[1]}</p>
+                                        </div>
                                     </div>
 
-                                    <div>
+                                    <hr className="weatherbox__divider"/>
+
+                                    <div className = "forecastbox">
                                         <h4>{moment(this.day).add(3, 'days').format('dddd')}</h4>
-                                        <img src={this.getIcon(fourthDay, false)}/>
-                                        <p className = "highlightColor">{this.getMinMax(fourthDay)[0]}</p>
-                                        <p className = "highlightColor opacity">{this.getMinMax(fourthDay)[1]}</p>
+                                        <svg className="forecastbox-header__icon">
+                                            <use xlinkHref={this.getIcon(fourthDay)}/>
+                                        </svg>
+                                        <div className="forecastbox__temperatures">
+                                            <p className = "forecastbox__temperature">{this.getMinMax(fourthDay)[0]}</p>
+                                            <p className = "forecastbox__temperature forecastbox__temperature-opacity">{this.getMinMax(fourthDay)[1]}</p>
+                                        </div>
                                     </div>
 
-                                    <div>
+                                    <hr className="weatherbox__divider"/>
+                                    
+                                    <div className = "forecastbox">
                                         <h4>{moment(this.day).add(4, 'days').format('dddd')}</h4>
-                                        <img src={this.getIcon(fifthDay, false)}/>
-                                        <p className = "highlightColor">{this.getMinMax(fifthDay)[0]}</p>
-                                        <p className = "highlightColor opacity">{this.getMinMax(fifthDay)[1]}</p>
+                                        <svg className="forecastbox-header__icon">
+                                            <use xlinkHref={this.getIcon(fifthDay)}/>
+                                        </svg>
+                                        <div className="forecastbox__temperatures">
+                                            <p className = "forecastbox__temperature">{this.getMinMax(fifthDay)[0]}</p>
+                                            <p className = "forecastbox__temperature forecastbox__temperature-opacity">{this.getMinMax(fifthDay)[1]}</p>
+                                        </div>
                                     </div>
-                                </div>
                             </div>
             </Loader>
         );
