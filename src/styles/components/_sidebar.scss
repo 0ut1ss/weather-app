@@ -36,19 +36,17 @@
 
 .sidenav__expand {
     @extend .sidebar__sidenav;
-    width: 25rem;
+    width: 50vw;
 
     @include for-phone-only {
-        width: 100%;
         h1 {
             margin-bottom: 50px;
         }
       }
 
-
-    @include  for-tablet-portrait-up {
-        width: 18rem;
-      }
+    @include for-desktop-up {
+        width: 30%;
+    }
 }
 
 .sidebar-content {
@@ -63,8 +61,8 @@
         transform: translate(-50%, -62%);
       }
 
-      @include for-tablet-portrait-up {
-          font-size: 1.5rem;
+      @include for-tablet-landscape-up {
+          font-size: 4rem;
       }
 }
 

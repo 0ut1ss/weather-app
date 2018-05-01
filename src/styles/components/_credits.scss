@@ -13,6 +13,10 @@ body {
     left: 50%;
     transform: translate(-50%, -40%);
 
+    p {
+        text-align: center;
+    }
+
     @include for-phone-only-landscape {
         font-size: 1.3rem;
     }

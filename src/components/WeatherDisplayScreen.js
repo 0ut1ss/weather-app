@@ -2,7 +2,6 @@ import React from 'react';
 import DummyWeather from '../../DummyWeather.json';
 import {connect} from 'react-redux';
 import moment from 'moment';
-import Sidebar from './Sidebar';
 import Loader from 'react-loader';
 
 
@@ -109,8 +108,7 @@ class WeatherDisplayScreen extends React.Component {
 
         return (
             <Loader loaded = {this.state.loaded} className = "loader" color = "#6ffe90">
-                    <div>
-                    <Sidebar />
+
                         <div className = "weatherbox">
                                 <div className = "today">
                                     <h4 className = "highlightColor">Today</h4>
@@ -149,7 +147,6 @@ class WeatherDisplayScreen extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                </div>
             </Loader>
         );
     }

@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import {forecast} from '../actions/forecast';    
 import PlacesAutocomplete from 'react-places-autocomplete';
 import { geocodeByAddress, geocodeByPlaceId, getLatLng } from 'react-places-autocomplete';
-import Sidebar from './Sidebar';
 
  class SearchScreen extends React.Component {
 
@@ -58,41 +57,44 @@ import Sidebar from './Sidebar';
         }
 
         const cssClasses = {
-            root: {
-                position: 'relative'
-            },
+
             input: {
-                width: '80%',
-                height: '4rem',
-                color: '#d3b5ff',
-                boxShadow: '0 2px 2px #774fb3',
+                border: '0',
                 backgroundColor: '#a970ff',
-                border: 'none'
+                paddingLeft: '0',
+                paddingRight: '0',
+                borderRadius: '2rem 2rem',
+                color: '#fff',
+                outline: 'none'
             },
-            autocompleteContainer: {
-                width: '85%',
-                left: '7%'
+            root: {
+                border: '0',
             }
           }
 
             
         return (
 
-                <div className="searchScreen">
-                <Sidebar />
-                    <div className= "searchbox">
+                    <div className="searchbox">
                         <p>type a location:</p>
-                        <div className = "searchbox__form-root">
-                            <form onSubmit={this.handleFormSubmit}>
-                            <PlacesAutocomplete inputProps={inputProps} styles = {cssClasses}/>
-                            <button type="submit" className= "form__button"></button>
+                        
+                            <form onSubmit={this.handleFormSubmit} className="searchbox__form">
+                            <PlacesAutocomplete inputProps={inputProps} styles = {cssClasses} />
+                            <button type="submit" className= "searchbox__form-button">
+                                <svg className="searchbox__icon">
+                                    <use xlinkHref="images/sprite.svg#icon-magnifying-glass"/>
+                                </svg>
+                            </button>
                             </form>
-                        </div>
-                        <p>or give us your location:</p>
 
-                        <button onClick = {this.handleAccessLocation} className= "locationbutton">access location</button>
+                        <p>or give us your location:</p>
+                        <div className="location">
+                            <button onClick = {this.handleAccessLocation} className="location__button">Your location</button>
+                            <svg className="location__icon">
+                                <use xlinkHref="images/sprite.svg#icon-direction"/>
+                            </svg>
+                        </div>
                     </div>
-                </div>
         );
     }
 }
