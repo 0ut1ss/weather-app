@@ -43,6 +43,9 @@
             margin-bottom: 50px;
         }
       }
+    @include for-phone-only-landscape {
+        margin-bottom: 0;
+    }
 
     @include for-desktop-up {
         width: 30%;
@@ -59,6 +62,7 @@
     
     @include for-phone-only-landscape {
         transform: translate(-50%, -62%);
+        font-size: 1.5rem;
       }
 
       @include for-tablet-landscape-up {
